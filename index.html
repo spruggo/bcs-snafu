@@ -1,0 +1,169 @@
+Perfect! Here's a simple layout and code for your description using **HTML**, **CSS**, and **JavaScript**. It will:
+
+* Let the user enter a die roll (left box).
+* Show 12 checkboxes (middle box), each with a value (+ or -).
+* Automatically calculate and display the total (right box).
+
+---
+
+### ✅ Features
+
+* Clean, responsive 3-column layout
+* Real-time updating of the total
+* Each checkbox has an adjustable value
+
+---
+
+### ✅ Here’s the code:
+
+Would you like it editable in the canvas? Or here's the full version right here to copy:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dice Modifier Calculator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .box {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .box h2 {
+      margin-top: 0;
+    }
+
+    .checkbox-item {
+      margin-bottom: 8px;
+    }
+
+    .total-display {
+      font-size: 2em;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Left Box: Die Input -->
+    <div class="box">
+      <h2>Enter Die Roll</h2>
+      <input type="number" id="dieRoll" value="0" />
+    </div>
+
+    <!-- Middle Box: Checkboxes -->
+    <div class="box">
+      <h2>Modifiers</h2>
+      <div id="checkboxes"></div>
+    </div>
+
+    <!-- Right Box: Result -->
+    <div class="box">
+      <h2>Total</h2>
+      <div class="total-display" id="total">0</div>
+    </div>
+  </div>
+
+  <script>
+    const checkboxContainer = document.getElementById("checkboxes");
+    const totalDisplay = document.getElementById("total");
+    const dieRollInput = document.getElementById("dieRoll");
+
+    // Example modifiers
+    const modifiers = [
+      { label: "Wounded (-2)", value: -2 },
+      { label: "Blessed (+1)", value: 1 },
+      { label: "Fatigued (-1)", value: -1 },
+      { label: "Inspired (+2)", value: 2 },
+      { label: "Poisoned (-3)", value: -3 },
+      { label: "Lucky (+1)", value: 1 },
+      { label: "Confused (-1)", value: -1 },
+      { label: "Enraged (+2)", value: 2 },
+      { label: "Cursed (-2)", value: -2 },
+      { label: "Guided (+3)", value: 3 },
+      { label: "Terrified (-1)", value: -1 },
+      { label: "Empowered (+1)", value: 1 }
+    ];
+
+    function renderCheckboxes() {
+      modifiers.forEach((mod, i) => {
+        const div = document.createElement("div");
+        div.classList.add("checkbox-item");
+
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = `mod${i}`;
+        input.dataset.value = mod.value;
+
+        const label = document.createElement("label");
+        label.htmlFor = input.id;
+        label.textContent = mod.label;
+
+        input.addEventListener("change", updateTotal);
+
+        div.appendChild(input);
+        div.appendChild(label);
+        checkboxContainer.appendChild(div);
+      });
+    }
+
+    function updateTotal() {
+      const base = parseInt(dieRollInput.value, 10) || 0;
+      let total = base;
+
+      const checkboxes = checkboxContainer.querySelectorAll("input[type='checkbox']");
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          total += parseInt(cb.dataset.value, 10);
+        }
+      });
+
+      totalDisplay.textContent = total;
+    }
+
+    dieRollInput.addEventListener("input", updateTotal);
+
+    renderCheckboxes();
+    updateTotal();
+  </script>
+
+</body>
+</html>
+```
+
+---
+
+Would you like:
+
+* A hosted version (Netlify, GitHub Pages)?
+* Buttons instead of checkboxes?
+* Custom icons or a fantasy theme?
+* This as a downloadable zip or previewable canvas?
+
+Let me know how far you want to go — I can expand it in any direction!
