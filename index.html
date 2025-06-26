@@ -74,7 +74,6 @@
     const totalDisplay = document.getElementById("total");
     const dieRollInput = document.getElementById("dieRoll");
 
-    // Example modifiers
     const modifiers = [
       { label: "Fresh (+1)", value: 1 },
       { label: "Coordination Marker (-1)", value: -1 },
@@ -85,9 +84,12 @@
       { label: "Game Specific DRM (-1)", value: -1 },
       { label: "Game Specific DRM (-2)", value: -2 },
       { label: "Game Specific DRM (-3)", value: -3 },
+      { label: "Game Specific DRM (+1)", value: 1 },
+      { label: "Game Specific DRM +2)", value: 2 },
+      { label: "Game Specific DRM (+3)", value: 3 },
       { label: "Optimal Distance (+1)", value: 1 },
       { label: "Ghost Trains (-1)", value: -1 },
-      { label: "Crossing the Streams (-1)", value: 1 },
+      { label: "Crossing the Streams (-1)", value: -1 },
       { label: "MSR uses Tracks and Good Trafficability (-1)", value: -1 },
       { label: "MSR uses Tracks and Poor Trafficability (-2)", value: -2 },
       { label: "Combat Trains Off-Map (-3)", value: -3 },
